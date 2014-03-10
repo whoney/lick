@@ -1,0 +1,7 @@
+cmake_minimum_required (VERSION 2.6)
+project (lick)
+add_definitions (-Wall -std=c++11)
+set (CMAKE_INCLUDE_CURRENT_DIR ON)
+file(GLOB lick_sources "*.cpp")
+add_executable (lick ${lick_sources})
+install (TARGETS lick DESTINATION bin)

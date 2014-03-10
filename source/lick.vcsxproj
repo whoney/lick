@@ -1,0 +1,47 @@
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup Condition="'$(Configuration)'==''">
+		<Configuration>Release</Configuration>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectConfiguration Include="Release|Win32">
+			<Configuration>Release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Debug|Win32">
+			<Configuration>Debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>		
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
+	<PropertyGroup>
+		<ConfigurationType>Application</ConfigurationType>
+		<PlatformToolset>v110</PlatformToolset>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+	<ItemGroup>
+		<ClCompile Include="lick.cpp" />
+		<ClCompile Include="context.cpp" />
+		<ClCompile Include="expr.cpp" />
+		<ClCompile Include="funcs.cpp" />
+		<ClCompile Include="module.cpp" />
+		<ClCompile Include="parser.cpp" />
+		<ClCompile Include="stmt.cpp" />
+		<ClCompile Include="sys_funcs.cpp" />
+		<ClCompile Include="value.cpp" />
+		<ClCompile Include="hashstore.cpp" />
+		<ClCompile Include="sha1.cpp" />
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="context.h" />
+		<ClInclude Include="expr.h" />
+		<ClInclude Include="funcs.h" />
+		<ClInclude Include="module.h" />
+		<ClInclude Include="parser.h" />
+		<ClInclude Include="stmt.h" />
+		<ClInclude Include="sys_funcs.h" />
+		<ClInclude Include="value.h" />
+		<ClInclude Include="hashstore.h" />
+		<ClInclude Include="sha1.h" />
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Targets" />
+</Project>

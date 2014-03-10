@@ -1,0 +1,128 @@
+b = [3, 4];
+dict = {"k":"v", "otherkey":"othervalue"};
+
+dict["k"];
+dict["k"] = "new";
+dict;
+dict["added"] = "extra";
+dict;
+
+strlen ("pizdec kotu Vasiliyu");
+
+println ("size of dict:", length (dict));
+
+length (dict);
+"size of array";
+length (b);
+"----";
+length ("very long string");
+"----";
+
+println ("files....");
+der_files = files (".");
+println ("files is", der_files);
+println ("length is", length(der_files));
+
+b[1] = 5;
+b[1];
+b[1] = b[1] + 1;
+b[5] = "zhopa";
+b;
+dict["arr"] = b;
+dict;
+
+for (a = 0; a < length (der_files); a++) {
+	println ("file", a, "is", der_files[a]);
+	if (der_files[a] == "lick") {
+		println (" --- this is lick");
+		break;
+	}
+}
+
+a = 4;
+while (der_files[a] != "lick") {
+	println ("found aaaaah", der_files[a]);
+	a++;
+}
+
+supastr = "";
+
+for (bzz in files(".")) {
+	if (supastr != "")
+		supastr = supastr + " ";
+	supastr = supastr + bzz;
+}
+
+println ("supastr: '", supastr, "'");
+
+println ("found lick", der_files[a]);
+
+println ("retval", pizdec (4, ["hueta", "kapizda"]));
+println ("after return, b is now", b);
+
+ebat ();
+
+target ebat() {
+
+	println ("let's fuck");
+}
+
+function pizdec (param1, param2) {
+
+	println ("pizdec", "param1", param1, "param2", param2);
+	println ("b is", b);
+	b = 18;
+	return param1 + 10;
+	println ("b is now", b);
+
+}
+
+zz = 6;
+println ("++zz = ", ++zz);
+
+ee = 10;
+println ("ee++ = ", ee++);
+println ("ee now", ee);
+
+
+for (a = 0; a <= 5; ++a)
+	println ("a", a);
+
+if (a == 5) {
+	println ("is true");
+	println ("again");
+} else
+	println ("false");
+
+println ("--------- here ------------ ");
+
+a1 = ["a", "b", "c"];
+println ("a1 = ", a1);
+a1 += "d";
+println ("a1 = ", a1);
+a1 = "above" + a1;
+println ("a1 = ", a1);
+a1 = ["1", "2"] + a1;
+println ("a1 = ", a1);
+
+println ("--------- here ------------ ");
+
+a = 5;
+println ("a = ", a);
+a += "zz";
+println ("a = ", a);
+
+filtered = files (".").match("*.cpp", "*.h").exclude("context.*").replace ("cpp", "huiepp");
+println ("filtered: ", filtered);
+
+target withParams (a) {
+	println ("target with params: ", a);
+}
+
+depends (files (".").match ("*.cpp")) {
+	println ("cpp file changed");
+}
+
+println (files (".").match ("*.cpp").abspath ());
+println ("exists(lickable): ", exists ("lickable"));
+println ("exists(huj): ", exists ("huj"));

@@ -1,0 +1,16 @@
+println ("called root, cwd: ", cwd());
+
+function in_root (param) {
+
+	println ("in_root: ", param);
+	println ("cwd: ", cwd ());
+
+}
+
+target in_root_target (param) {
+	println ("in_root_target: ", param);
+	println ("cwd: ", cwd ());
+
+}
+
+
