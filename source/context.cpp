@@ -44,6 +44,7 @@ void CVarStore::initDefaultVars () {
 
 	sys -> append ("env", shared_ptr<CValueRef> (new CValueRef (shared_ptr<CValue> (env))));
 	sys -> append ("path", shared_ptr<CValueRef> (new CValueRef (shared_ptr<CValue> (path))));
+	sys -> append ("include_path", shared_ptr<CValueRef> (new CValueRef (shared_ptr<CValue> (new CArrayValue ()))));
 	
 	setVar ("sys", shared_ptr<CValue> (sys));
 

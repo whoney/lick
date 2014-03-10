@@ -91,6 +91,27 @@ string extractFileName (const string& fname) {
 
 }
 
+bool isAbsolutePath (const string& path) {
+
+	if (path.empty ())
+		return false;
+	
+	char firstChar = path.at (0);
+	if (getAnyPathSeparator().find (firstChar) != string::npos)
+		return true;
+	
+#ifdef _MSC_VER
+		
+	if (path.length () >= 3) {
+		if (isalpha (path.at (0)) && (path.at (1) == ':') && (getAnyPathSeparator().find (path.at(2)) != string::npos))
+			return true;
+	}
+		
+#endif
+		
+	return false;
+	
+}
 
 void getFilesInPath (list<string>& result, const string& relpath, const string& path) {
 

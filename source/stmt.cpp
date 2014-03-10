@@ -480,7 +480,33 @@ CIncludeStatement::CIncludeStatement (CInputParser& parser): CStatement (parser)
 
 void CIncludeStatement::executeThrow (shared_ptr<CExecutionContext> ctx) {
 	
-	string includePath = getAbsolutePath (makeSysSeparators (expr -> evaluate (ctx) -> asString ())); 
+	string tryPath = makeSysSeparators (expr -> evaluate (ctx) -> asString ());
+	
+	if (!isAbsolutePath (tryPath)) {
+		
+		if (!fileExists (tryPath)) {
+
+			shared_ptr<CValue> sysVar = ctx -> getVarStore () -> getVar ("sys");
+			if (sysVar -> getType() == ValueDict) {
+				shared_ptr<CValue> ipathVar = sysVar -> subscript ("include_path");
+				if (ipathVar -> getType () == ValueArray) {
+					
+					for (int i = 0; i < ipathVar -> getLength (); i++) {
+						string iPathElem = ipathVar -> subscript (i) -> asString ();
+						string maybePath = iPathElem + getPathSeparator () + tryPath;
+						if (fileExists (maybePath)) {
+							tryPath = maybePath;
+							break;
+						}
+						
+					}
+				}
+			}
+		}
+		
+	}
+	
+	string includePath = getAbsolutePath (tryPath); 
 	
 	if (!ctx -> getBaseContext () -> hasIncludedModule (includePath)) {
 	
