@@ -875,8 +875,16 @@ string getUserName () {
 	return string (buf);
 
 #else
-
-	return string (getlogin ());
+	
+	char *logname = getenv ("LOGNAME");
+	if (logname != NULL)
+		return string (logname);
+	
+	logname = getlogin ();
+	if (logname != NULL)
+		return string (logname);
+	
+	return string ("user");
 	
 #endif
 }
